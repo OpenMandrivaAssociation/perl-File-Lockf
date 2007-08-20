@@ -1,6 +1,6 @@
 %define module  File-Lockf
 %define version 0.20
-%define release 9mdk
+%define release %mkrel 9
 
 Summary: 	%{module} module for perl
 Name: 		perl-%{module}
