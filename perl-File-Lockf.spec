@@ -1,24 +1,24 @@
-%define module  File-Lockf
-%define version 0.20
-%define release %mkrel 12
+%define upstream_name    File-Lockf
+%define upstream_version 0.20
 
-Summary: 	%{module} module for perl
-Name: 		perl-%{module}
-Version: 	%{version}
-Release: 	%{release}
-License: 	GPL or Artistic
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
+Summary: 	%{upstream_name} module for perl
+License: 	GPL+ or Artistic
 Group: 		Development/Perl
-Source0: 	%{module}-%{version}.tar.bz2
-Url:		http://search.cpan.org/dist/%{module}
-BuildRoot: 	%{_tmppath}/%{name}-buildroot
-Requires: 	perl perl-base 
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0: 	%{upstream_name}-%{upstream_version}.tar.bz2
+
 BuildRequires:	perl-devel
+BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 File-Lockf module for perl
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -41,4 +41,3 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{perl_vendorlib}/*/auto/File/lockf
 %{perl_vendorlib}/*/auto/File/lockf/lockf.so
 %{_mandir}/*/*
-
